@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { OrphanCardComponent } from './orphan-card/orphan-card.component';
 import { RatingModule } from 'ng-starrating';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent }
@@ -18,7 +19,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    RatingModule
+    RatingModule,
+    ReactiveFormsModule
   ]
 })
 export class CatalogModule { }

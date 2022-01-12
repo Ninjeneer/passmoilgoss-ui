@@ -2,26 +2,29 @@
   <aside class="col-3 p-4">
     <h1 class="">PassMoiLgoss</h1>
 
-    <div class="mb-4">
-      <p>Sexe :</p>
-      <select>
-        <option value="male">Garçon</option>
-        <option value="female">Fille</option>
-      </select>
-    </div>
+    <form [formGroup]="filterGroup">
+      <div class="mb-4">
+        <p>Sexe :</p>
+        <select formControlName="gender">
+          <option value="both">Les deux</option>
+          <option value="male">Garçon</option>
+          <option value="female">Fille</option>
+        </select>
+      </div>
 
-    <div class="mb-4">
-      <p>Prénom</p>
-      <input type="text" placeholder="Prénom" />
-    </div>
+      <div class="mb-4">
+        <p>Prénom</p>
+        <input type="text" placeholder="Prénom" formControlName="firstname" />
+      </div>
 
-    <div class="mb-4">
-      <p>Nationnalité</p>
-      <label *ngFor="let country of this.countries" [for]="country" class="ml-3">
-        <input type="checkbox" [id]="country">
-        {{ country }}
-      </label>
-    </div>
+      <div class="mb-4">
+        <p>Nationnalité</p>
+        <label *ngFor="let country of this.countries" [for]="country" class="ml-3">
+          <input class="countryCb" type="checkbox" [id]="country" [value]="country" (change)="countryChange()" />
+          {{ country }}
+        </label>
+      </div>
+    </form>
   </aside>
 
   <section class="col-9 p-4">

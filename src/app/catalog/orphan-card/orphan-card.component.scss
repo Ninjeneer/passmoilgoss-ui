@@ -5,3 +5,13 @@ img {
 h1 {
   font-size: 2rem;
 }
+
+.orphan-card {
+  transition-duration: 0.2s;
+
+  &:hover {
+    background-color: rgb(223, 223, 223);
+    transition-duration: 0.2s;
+    cursor: pointer;
+  }
+}

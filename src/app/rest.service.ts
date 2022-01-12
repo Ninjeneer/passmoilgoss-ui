@@ -10,8 +10,8 @@ export default class RestService {
 
   private backend = "http://localhost:3000";
 
-  public findAllOrphans(): Observable<HttpResponse<Orphan[]>> {
-    return this.httpClient.get<Orphan[]>(`${this.backend}/orphans`, { observe: 'response' });
+  public findAllOrphans(params): Observable<HttpResponse<Orphan[]>> {
+    return this.httpClient.get<Orphan[]>(`${this.backend}/orphans`, { params, observe: 'response' });
   }
 
   public findOrphan(id: string): Observable<HttpResponse<Orphan[]>> {
