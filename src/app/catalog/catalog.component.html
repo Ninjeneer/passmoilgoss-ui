@@ -1,18 +1,30 @@
-<aside>
-  <h1 class="">PassMoiLgoss</h1>
+<div class="row h-100">
+  <aside class="col-3 p-4">
+    <h1 class="">PassMoiLgoss</h1>
 
-  <p>Sexe :</p>
-  <select>
-    <option value="male">Garçon</option>
-    <option value="female">Fille</option>
-  </select>
+    <div class="mb-4">
+      <p>Sexe :</p>
+      <select>
+        <option value="male">Garçon</option>
+        <option value="female">Fille</option>
+      </select>
+    </div>
 
-  <p>Prénom</p>
-  <input type="text" placeholder="Prénom" />
+    <div class="mb-4">
+      <p>Prénom</p>
+      <input type="text" placeholder="Prénom" />
+    </div>
 
-  <p>Nationnalité</p>
-  <label *ngFor="let country of this.countries" [for]="country">
-    <input type="checkbox" [id]="country">
-    {{ country }}
-  </label>
-</aside>
+    <div class="mb-4">
+      <p>Nationnalité</p>
+      <label *ngFor="let country of this.countries" [for]="country" class="ml-3">
+        <input type="checkbox" [id]="country">
+        {{ country }}
+      </label>
+    </div>
+  </aside>
+
+  <section class="col-9 p-4">
+    <app-orphan-card *ngFor="let orphan of this.orphans" [orphan]="orphan"></app-orphan-card>
+  </section>
+</div>

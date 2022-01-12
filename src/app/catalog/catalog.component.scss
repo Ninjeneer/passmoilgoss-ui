@@ -1,0 +1,11 @@
+@import '../app.component.scss';
+
+aside {
+  background-color: rgb(19, 25, 33);
+  color: white;
+  overflow-y: auto;
+}
+
+aside label {
+  display: block;
+}
