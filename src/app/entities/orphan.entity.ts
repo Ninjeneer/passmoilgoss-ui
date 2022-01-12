@@ -1,35 +1,37 @@
 export interface Orphan {
-	id: string;
+  id: string;
 
-	firstname: string;
+  firstname: string;
 
-	lastname: string;
+  lastname: string;
 
-	birthDate: Date;
+  birthDate: Date;
 
-	country: string;
+  country: string;
 
-	gender: string;
+  gender: string;
 
-	score: number;
+  score: number;
 
-	picture: string;
+  age: number;
 
-	eyes: string;
+  picture: string;
 
-	hairs: string;
+  eyes: string;
 
-	weight: number;
+  hairs: string;
 
-	height: number;
+  weight: number;
 
-	beauty: number;
+  height: number;
 
-	intelligence: number;
+  beauty: number;
 
-	sociability: number;
+  intelligence: number;
 
-	calm: number;
+  sociability: number;
 
-	hygiene: number;
+  calm: number;
+
+  hygiene: number;
 }

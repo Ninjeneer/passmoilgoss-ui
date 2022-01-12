@@ -15,6 +15,7 @@ export class DetailsComponent implements OnInit {
   public orphan: Orphan;
   public chartData: ChartConfiguration['data'];
   public chartOptions: ChartConfiguration['options'];
+  public isOrdered: boolean;
 
   constructor(private readonly activeRoute: ActivatedRoute, private readonly restService: RestService) { }
 
@@ -38,6 +39,13 @@ export class DetailsComponent implements OnInit {
         })
       }
     })
+  }
+
+  order() {
+    if (confirm("Voulez-vous faire une demande pour cet enfant ?")) {
+      alert("Demande prise en compte, vous serez contacté par l'orphelinat sous peu.");
+      this.isOrdered = true;
+    }
   }
 
 }
