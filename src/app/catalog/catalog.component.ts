@@ -27,7 +27,7 @@ export class CatalogComponent implements OnInit {
 
     this.filterGroup.get('gender').valueChanges.subscribe((val) => {
       if (val === 'both') {
-        this.filters.set('gender', undefined);
+        this.filters.delete('gender')
       } else {
         this.filters.set('gender', val);
       }
