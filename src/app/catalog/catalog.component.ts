@@ -13,9 +13,15 @@ export class CatalogComponent implements OnInit {
 
   public orphans: Orphan[] = [];
   public countries: string[] = [];
+  public hairs = ['Blond', 'Brun', 'Châtain', 'Roux'];
+  public eyes = ['Bleu', 'Marron', 'Vert'];
+
+  public showCountries: boolean;
+  public showHairs: boolean;
+  public showEyes: boolean;
 
   public filterGroup: FormGroup;
-  private filters: Map<string, string | string[]> = new Map();
+  private filters: Map<string, string> = new Map();
 
   constructor(private readonly restService: RestService) { }
 
@@ -48,7 +54,31 @@ export class CatalogComponent implements OnInit {
 
   countryChange() {
     const checkedCountries = Array.from(document.querySelectorAll(".countryCb:checked")).map(c => c.getAttribute('value'));
-    this.filters.set('countries', checkedCountries);
+    if (checkedCountries.join('|') === '') {
+      this.filters.delete('countries')
+    } else {
+      this.filters.set('countries', checkedCountries.join('|'));
+    }
+    this.refreshOrphanList();
+  }
+
+  hairChange() {
+    const checkedHairs = Array.from(document.querySelectorAll(".hairCb:checked")).map(c => c.getAttribute('value'));
+    if (checkedHairs.join('|') === '') {
+      this.filters.delete('hairs')
+    } else {
+      this.filters.set('hairs', checkedHairs.join('|'));
+    }
+    this.refreshOrphanList();
+  }
+
+  eyeChange() {
+    const checkedEye = Array.from(document.querySelectorAll(".eyeCb:checked")).map(c => c.getAttribute('value'));
+    if (checkedEye.join('|') === '') {
+      this.filters.delete('eyes')
+    } else {
+      this.filters.set('eyes', checkedEye.join('|'));
+    }
     this.refreshOrphanList();
   }
 
@@ -57,5 +87,19 @@ export class CatalogComponent implements OnInit {
     this.restService.findAllOrphans(Object.fromEntries(this.filters.entries())).subscribe((response) => {
       this.orphans = response.body;
     });
+  }
+
+  toggle(section: string) {
+    switch (section) {
+      case 'countries':
+        this.showCountries = !this.showCountries;
+        break;
+      case 'hairs':
+        this.showHairs = !this.showHairs;
+        break;
+      case 'eyes':
+        this.showEyes = !this.showEyes;
+        break;
+    }
   }
 }

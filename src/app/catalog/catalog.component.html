@@ -18,16 +18,45 @@
       </div>
 
       <div class="mb-4">
-        <p>Nationnalité</p>
-        <label *ngFor="let country of this.countries" [for]="country" class="ml-3">
+        <div class="toggle w-100 d-flex justify-content-between" (click)="toggle('countries')">
+          <p>Nationalité</p>
+          <b>{{ this.showCountries ? '-' : '+' }}</b>
+        </div>
+        <label *ngFor="let country of this.countries" [for]="country" class="ml-3" [hidden]="!this.showCountries">
           <input class="countryCb" type="checkbox" [id]="country" [value]="country" (change)="countryChange()" />
           {{ country }}
+        </label>
+      </div>
+
+      <div class="mb-4">
+        <div class="toggle w-100 d-flex justify-content-between" (click)="toggle('hairs')">
+          <p>Cheveux</p>
+          <b>{{ this.showHairs ? '-' : '+' }}</b>
+        </div>
+        <label *ngFor="let hair of this.hairs" [for]="hair" class="ml-3" [hidden]="!this.showHairs">
+          <input class="hairCb" type="checkbox" [id]="hair" [value]="hair" (change)="hairChange()" />
+          {{ hair }}
+        </label>
+      </div>
+
+      <div class="mb-4">
+        <div class="toggle w-100 d-flex justify-content-between" (click)="toggle('eyes')">
+          <p>Yeux</p>
+          <b>{{ this.showEyes ? '-' : '+' }}</b>
+        </div>
+        <label *ngFor="let eye of this.eyes" [for]="eye" class="ml-3" [hidden]="!this.showEyes">
+          <input class="eyeCb" type="checkbox" [id]="eye" [value]="eye" (change)="eyeChange()" />
+          {{ eye }}
         </label>
       </div>
     </form>
   </aside>
 
   <section class="col-9 p-4">
+    <div *ngIf="this.orphans.length === 0" class="text-center">
+      <h1>Aucun orphelin ne correspond à vos envies</h1>
+      <h3>Revenez plus tard, nous en aurons peut-être :)</h3>
+    </div>
     <app-orphan-card *ngFor="let orphan of this.orphans" [orphan]="orphan"></app-orphan-card>
   </section>
 </div>
