@@ -14,8 +14,8 @@ export default class RestService {
     return this.httpClient.get<Orphan[]>(`${this.backend}/orphans`, { params, observe: 'response' });
   }
 
-  public findOrphan(id: string): Observable<HttpResponse<Orphan[]>> {
-    return this.httpClient.get<Orphan[]>(`${this.backend}/orphans/${id}`, { observe: 'response' });
+  public findOrphan(id: string): Observable<HttpResponse<Orphan>> {
+    return this.httpClient.get<Orphan>(`${this.backend}/orphans/${id}`, { observe: 'response' });
   }
 
   public findCountries(): Observable<HttpResponse<string[]>> {

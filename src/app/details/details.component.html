@@ -1,0 +1,43 @@
+<div class="row h-100 w-75 mx-auto bg-white p-3 pt-0 overflow-auto" *ngIf="this.orphan">
+  <div class="col-12 d-flex flex-column justify-content-between">
+    <div>
+      <div class="row">
+        <div class="col-12"><a routerLink="/">&lt; Retour</a></div>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          <img [src]="this.orphan.picture" />
+        </div>
+        <div class="col-9">
+          <h1>{{ this.orphan.firstname }}</h1>
+          <p class="m-0 mb-1">{{ this.orphan.birthDate | date:'dd/MM/YYY' }}</p>
+          <p class="m-0 mb-1">{{ this.orphan.country}} | {{ this.orphan.height }} cm | {{ this.orphan.weight }} Kg </p>
+          <star-rating [value]="this.orphan.score" [totalstars]="5" checkedcolor="gold" uncheckedcolor="grey"
+            size="24px" [readonly]="false" [readonly]="true"></star-rating>
+          <hr />
+          <p class="m-0 mb-1">Couleur des yeux : {{ this.orphan.eyes }}</p>
+          <p class="m-0 mb-1">Couleur des cheveux : {{ this.orphan.hairs }}</p>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <h1>Statistiques de l'orphelin</h1>
+        </div>
+
+        <div class="col-6 mx-auto">
+          <canvas baseChart [data]="this.chartData" [options]="{ scales: { radialLinear: { beginAtZero: true } } }"
+            [type]="'radar'">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="btn btn-primary">Faire la demande</button>
+      </div>
+    </div>
+  </div>
+</div>
