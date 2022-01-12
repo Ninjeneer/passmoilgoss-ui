@@ -21,6 +21,7 @@ export class CatalogComponent implements OnInit {
   public showEyes: boolean;
 
   public filterGroup: FormGroup;
+  public sortGroup: FormGroup;
   private filters: Map<string, string> = new Map();
 
   constructor(private readonly restService: RestService) { }
@@ -28,7 +29,11 @@ export class CatalogComponent implements OnInit {
   ngOnInit(): void {
     this.filterGroup = new FormGroup({
       gender: new FormControl('both'),
-      firstname: new FormControl('')
+      firstname: new FormControl(''),
+    });
+
+    this.sortGroup = new FormGroup({
+      sort: new FormControl('none')
     });
 
     this.filterGroup.get('gender').valueChanges.subscribe((val) => {
@@ -43,7 +48,11 @@ export class CatalogComponent implements OnInit {
     this.filterGroup.get('firstname').valueChanges.subscribe((val) => {
       this.filters.set('firstname', val);
       this.refreshOrphanList();
-    })
+    });
+
+    this.sortGroup.get('sort').valueChanges.subscribe((val) => {
+      this.refreshOrphanList();
+    });
 
     this.refreshOrphanList();
 
@@ -84,7 +93,7 @@ export class CatalogComponent implements OnInit {
 
   refreshOrphanList() {
     console.log(Object.fromEntries(this.filters.entries()))
-    this.restService.findAllOrphans(Object.fromEntries(this.filters.entries())).subscribe((response) => {
+    this.restService.findAllOrphans({ ...Object.fromEntries(this.filters.entries()), sort: this.sortGroup.get('sort').value }).subscribe((response) => {
       this.orphans = response.body;
     });
   }

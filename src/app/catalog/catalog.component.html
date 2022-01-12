@@ -57,6 +57,22 @@
       <h1>Aucun orphelin ne correspond à vos envies</h1>
       <h3>Revenez plus tard, nous en aurons peut-être :)</h3>
     </div>
+    <form [formGroup]="sortGroup" *ngIf="this.orphans.length > 0">
+      <label for="sort">
+        Trier par :
+        <select id="sort" formControlName="sort">
+          <option value="none">Pas de tri</option>
+          <option value="score">Score croissant</option>
+          <option value="-score">Score décroissant</option>
+          <option value="age">Âge croissant</option>
+          <option value="-age">Âge décroissant</option>
+          <option value="height">Taille croissante</option>
+          <option value="-height">Taille décroissante</option>
+          <option value="weight">Poids croissant</option>
+          <option value="-weight">Poids décroissant</option>
+        </select>
+      </label>
+    </form>
     <app-orphan-card *ngFor="let orphan of this.orphans" [orphan]="orphan"></app-orphan-card>
   </section>
 </div>
