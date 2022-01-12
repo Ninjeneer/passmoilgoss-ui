@@ -1,1 +1,18 @@
-<p>catalog works!</p>
+<aside>
+  <h1>PassMoiLgoss</h1>
+
+  <p>Sexe :</p>
+  <select>
+    <option value="male">Garçon</option>
+    <option value="female">Fille</option>
+  </select>
+
+  <p>Prénom</p>
+  <input type="text" placeholder="Prénom" />
+
+  <p>Nationnalité</p>
+  <label *ngFor="let country of this.countries" [for]="country">
+    <input type="checkbox" [id]="country">
+    {{ country }}
+  </label>
+</aside>
