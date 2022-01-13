@@ -25,7 +25,7 @@ export class DetailsComponent implements OnInit {
       if (id) {
         this.restService.findOrphan(id).subscribe((response) => {
           this.orphan = response.body;
-          this.orphan.score = Math.round(this.orphan.score / 5)
+          this.orphan.score = Math.round(this.orphan.score / 4)
 
           this.chartData = {
             labels: ['Intelligence', 'Beauté', 'Sociabilité', 'Calme', 'Hygiène'],
