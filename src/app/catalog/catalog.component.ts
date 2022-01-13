@@ -92,7 +92,6 @@ export class CatalogComponent implements OnInit {
   }
 
   refreshOrphanList() {
-    console.log(Object.fromEntries(this.filters.entries()))
     this.restService.findAllOrphans({ ...Object.fromEntries(this.filters.entries()), sort: this.sortGroup.get('sort').value }).subscribe((response) => {
       this.orphans = response.body;
     });
