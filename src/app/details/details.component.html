@@ -1,12 +1,12 @@
-<div class="row h-100 w-75 mx-auto bg-white p-3 pt-0 overflow-auto" *ngIf="this.orphan">
-  <div class="col-12 d-flex flex-column justify-content-between">
+<div class="row h-100 pt-0 overflow-auto" *ngIf="this.orphan">
+  <div class="col-12 col-md-8 offset-md-2 d-flex flex-column justify-content-between bg-white">
     <div>
       <div class="row">
         <div class="col-12"><a routerLink="/">&lt; Retour</a></div>
       </div>
 
       <div class="row">
-        <div class="col-3">
+        <div class="col-12 col-md-3">
           <img [src]="this.orphan.picture" />
         </div>
         <div class="col-9">
@@ -26,7 +26,7 @@
           <h1>Statistiques de l'orphelin</h1>
         </div>
 
-        <div class="col-6 mx-auto">
+        <div class="col-12 col-md-6 mx-auto">
           <canvas baseChart [data]="this.chartData" [options]="{ scales: { radialLinear: { beginAtZero: true } } }"
             [type]="'radar'">
           </canvas>

@@ -1,6 +1,6 @@
 <div class="col-12 orphan-card rounded shadow p-4 mb-3" [routerLink]="['/details', { id: this.orphan.id }]">
   <div class="row">
-    <div class="col-2"><img [src]="this.orphan.picture"></div>
+    <div class="col-12 col-md-2"><img [src]="this.orphan.picture"></div>
     <div class="col-8">
       <h1 class="m-0 mb-1">{{ this.orphan.firstname }} ({{ this.orphan.gender }})</h1>
       <p class="m-0 mb-1">{{ this.orphan.birthDate | date:'dd/MM/YYY' }} - {{ this.orphan.age }} ans</p>
